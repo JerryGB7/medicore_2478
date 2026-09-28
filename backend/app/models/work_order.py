@@ -16,4 +16,9 @@ class Work_Order(Base):
     __tablename__ = "work-orders"
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(50))
-    priority: Mapped[work_order_priority] = mapped_column(sqlenum(work_order_priority, name="work_order_priority", callable_values=lambda enum_cls: [member.value for member in enum_cls]), default=work_order_priority.LOW)
+    priority: Mapped[work_order_priority] = mapped_column(sqlenum(work_order_priority, name="work_order_priority", 
+                                                                  callable_values=lambda enum_cls: [member.value for member in enum_cls]), 
+                                                                  default=work_order_priority.LOW)
+    status: Mapped[work_order_status] = mapped_column(sqlenum(work_order_status, name="work_order_status",
+                                                              callable_values= lambda enum_cls: [member.value for member in enum_cls]),
+                                                              default=work_order_status.PENDING)
