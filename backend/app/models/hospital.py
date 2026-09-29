@@ -8,6 +8,7 @@ from .base import Base
 
 if TYPE_CHECKING: 
     from .equipment import Equipment
+    from .work_order import Work_Order
 
 class Hospital(Base):
     __tablename__ = "hospitals"
@@ -18,4 +19,5 @@ class Hospital(Base):
     capacity: Mapped[int] = mapped_column(Integer)
     supervisor_id: Mapped[int] = mapped_column(Integer)
 
-    equipments: Mapped["Equipment"] = relationship(back_populates="hospital")
+    equipments: Mapped[list["Equipment"]] = relationship(back_populates="hospital")
+    work_orders: Mapped[list["Work_Order"]] = relationship(back_populates="hospital")

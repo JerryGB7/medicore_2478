@@ -5,6 +5,8 @@ class WorkOrderBase(BaseModel):
     title: str
     priority: work_order_priority = work_order_priority.LOW
     status: work_order_status = work_order_status.PENDING
+    equipment_id: int
+    hospital_id: int
 
 class WorkOrderCreate(WorkOrderBase):
     pass

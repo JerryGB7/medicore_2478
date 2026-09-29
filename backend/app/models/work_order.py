@@ -25,3 +25,5 @@ class Work_Order(Base):
     equipment_id: Mapped[int] = mapped_column(Integer)
     hospital_id: Mapped[int] = mapped_column(Integer)
 
+    equipment: Mapped["Equipment"] = relationship(back_populates="work-orders")
+    hospital: Mapped["Hospital"] = relationship(back_populates="work-orders")

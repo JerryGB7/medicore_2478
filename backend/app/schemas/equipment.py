@@ -6,7 +6,7 @@ class EquipmentBase(BaseModel):
     model: str = Field(ge=0, le=50)
     status: equipment_status = equipment_status.AVAILABLE
     charge_level: int = 100
-    facility_id: int
+    hospital_id: int
 
 class EquipmentCreate(EquipmentBase):
     pass

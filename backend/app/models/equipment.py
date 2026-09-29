@@ -10,6 +10,7 @@ from .enum import equipment_status
 
 if TYPE_CHECKING:
     from .hospital import Hospital
+    from .work_order import Work_Order
 
 class Equipment(Base):
     __tablename__ = "equipments"
@@ -24,3 +25,5 @@ class Equipment(Base):
     facility_id: Mapped[int] = mapped_column(Integer, ForeignKey("hospitals.id"))
 
     hospital: Mapped["Hospital"] = relationship(back_populates="equipments")
+    work_orders: Mapped[list["Work_Order"]] = relationship(back_populates="equipment")
+    
