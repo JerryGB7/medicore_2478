@@ -16,3 +16,8 @@ class work_order_status(str, Enum):
     IN_PROGRESS = "In-Progress",
     COMPLETED = "Completed",
     FAILED = "Failed"
+
+class RBAC(str, Enum):
+    CLINICAL_ADMIN = "Clinical-Admin",
+    FIELD_TECHNICIAN = "Field-Technician",
+    AUDITOR = "Auditor"

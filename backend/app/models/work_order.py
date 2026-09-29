@@ -22,3 +22,6 @@ class Work_Order(Base):
     status: Mapped[work_order_status] = mapped_column(sqlenum(work_order_status, name="work_order_status",
                                                               callable_values= lambda enum_cls: [member.value for member in enum_cls]),
                                                               default=work_order_status.PENDING)
+    equipment_id: Mapped[int] = mapped_column(Integer)
+    hospital_id: Mapped[int] = mapped_column(Integer)
+
