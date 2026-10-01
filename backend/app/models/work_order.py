@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from .hospital import Hospital
 
 class Work_Order(Base):
-    __tablename__ = "work-orders"
+    __tablename__ = "work_orders"
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column(String(50))
     priority: Mapped[work_order_priority] = mapped_column(sqlenum(work_order_priority, name="work_order_priority", 
@@ -25,5 +25,5 @@ class Work_Order(Base):
     equipment_id: Mapped[int] = mapped_column(Integer)
     hospital_id: Mapped[int] = mapped_column(Integer)
 
-    equipment: Mapped["Equipment"] = relationship(back_populates="work-orders")
-    hospital: Mapped["Hospital"] = relationship(back_populates="work-orders")
+    equipment: Mapped["Equipment"] = relationship(back_populates="work_orders")
+    hospital: Mapped["Hospital"] = relationship(back_populates="work_orders")

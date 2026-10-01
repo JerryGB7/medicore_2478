@@ -1,8 +1,8 @@
 import os 
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
-from .config import Settings
 
-DATABASE_URL = Settings.database_url
+
+DATABASE_URL = "postgresql+asyncpg://postgres:postgres@127.0.0.1:5432/medidemo"
 
 engine = create_async_engine(DATABASE_URL, echo=True)
 
