@@ -1,8 +1,8 @@
 import os
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.exc import IntegrityError
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.routers import work_order, equipment, auth, hospital
 from app.config import settings
