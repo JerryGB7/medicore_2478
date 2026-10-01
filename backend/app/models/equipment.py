@@ -12,6 +12,7 @@ from .enum import equipment_status
 if TYPE_CHECKING:
     from .hospital import Hospital
     from .work_order import Work_Order
+    from .worker import Worker
 
 class Equipment(Base):
     __tablename__ = "equipments"
@@ -23,8 +24,8 @@ class Equipment(Base):
                                                              values_callable=lambda enum_cls: [member.value for member in enum_cls]),
                                                              default=equipment_status.AVAILABLE)
     charge_level: Mapped[int] = mapped_column(Integer)
-    facility_id: Mapped[int] = mapped_column(Integer, ForeignKey("hospitals.id"))
+    hospital_id: Mapped[int] = mapped_column(Integer, ForeignKey("hospitals.id"))
 
     hospital: Mapped["Hospital"] = relationship(back_populates="equipments")
     work_orders: Mapped[list["Work_Order"]] = relationship(back_populates="equipment")
-    
+    workers: Mapped[list["Worker"]] = relationship(back_populates="equipment")

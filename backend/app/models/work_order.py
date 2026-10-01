@@ -11,6 +11,7 @@ from .enum import work_order_priority, work_order_status
 if TYPE_CHECKING:
     from .equipment import Equipment
     from .hospital import Hospital
+    from .worker import Worker
 
 class Work_Order(Base):
     __tablename__ = "work_orders"
@@ -22,8 +23,9 @@ class Work_Order(Base):
     status: Mapped[work_order_status] = mapped_column(sqlenum(work_order_status, name="work_order_status",
                                                               callable_values= lambda enum_cls: [member.value for member in enum_cls]),
                                                               default=work_order_status.PENDING)
-    equipment_id: Mapped[int] = mapped_column(Integer)
-    hospital_id: Mapped[int] = mapped_column(Integer)
+    equipment_id: Mapped[int] = mapped_column(Integer, ForeignKey("equipments.id"))
+    worker_id: Mapped[int] = mapped_column(Integer, ForeignKey("workers.id"))
 
     equipment: Mapped["Equipment"] = relationship(back_populates="work_orders")
     hospital: Mapped["Hospital"] = relationship(back_populates="work_orders")
+    workers: Mapped["Worker"] = relationship(back_populates="work_orders")

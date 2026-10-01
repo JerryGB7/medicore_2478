@@ -15,6 +15,7 @@ class Worker(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(50))
     hospital_id: Mapped[int] = mapped_column(Integer, ForeignKey("hospitals.id"))
+    equipment_id: Mapped[int] = mapped_column(Integer, ForeignKey("equipments.id"))
 
     hospital: Mapped["Hospital"] = relationship(back_populates="workers")
     equipment: Mapped["Equipment"] = relationship(back_populates="workers")
